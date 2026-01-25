@@ -20,14 +20,9 @@ export class Heroe {
     Logger.info(`¡[${this.nombre}] El héroe, ha entrado en la batalla!`);
   }
 
-  // Permite cambiar comportamiento sin modificar la clase
-  setHabilidad(nuevaHabilidad: IHabilidad): void {
-    Logger.info(`[${this.nombre}] ha equipado ${nuevaHabilidad.nombre}`);
-    this.habilidad = nuevaHabilidad;
-  }
 
   setHabilidadActiva(nuevaHabilidad: IHabilidadActiva): void {
-    Logger.info(`[${this.nombre}] ha equipado el ataque: ${nuevaHabilidad.nombre}`);
+    Logger.info(`[${this.nombre}] ha equipado el ataque activo: ${nuevaHabilidad.nombre}`);
     this.slotActivo = nuevaHabilidad;
   }
 
