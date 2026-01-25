@@ -5,16 +5,17 @@ import { HechizoFuego } from './HechizoFuego.js';
 import { Curacion } from './Curacion';
 import { AtaqueEspada } from './AtaqueEspada.js';
 import { PielDeRoble } from './PielDeRoble.js';
+import { HechizoRayo } from './HechizoRayo.js';
 
-export type TipoActiva = 'FUEGO' | 'ESPADA' | 'CURACION';
-export type TipoPasiva = 'ROBLE';
+export type TipoActiva = 'FUEGO' | 'ESPADA' | 'RAYO';
+export type TipoPasiva = 'ROBLE' | 'CURACION';
 
 export class HabilidadFactory {
     static crearActiva(tipo: TipoActiva): IHabilidadActiva {
         switch (tipo) {
             case 'FUEGO': return new HechizoFuego();
             case 'ESPADA': return new AtaqueEspada();
-            case 'CURACION': return new Curacion(); // Assuming AtaqueEspada is used for curative purposes
+            case 'RAYO': return new HechizoRayo();
             default: throw new Error("Activa no encontrada");
         }
     }
@@ -22,6 +23,7 @@ export class HabilidadFactory {
     static crearPasiva(tipo: TipoPasiva): IHabilidadPasiva {
         switch (tipo) {
             case 'ROBLE': return new PielDeRoble();
+            case 'CURACION': return new Curacion(); 
             default: throw new Error("Pasiva no encontrada");
         }
     }

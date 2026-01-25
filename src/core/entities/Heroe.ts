@@ -43,7 +43,7 @@ export class Heroe {
     this.slotPasivo = nuevaHabilidad;
   }
 
-  actuar(): void {
+  actuar(objetivo?: Heroe): void {
 
     if (this.slotActivo) {
       if (esHabilidadMagica(this.slotActivo)) {
@@ -57,15 +57,31 @@ export class Heroe {
       if (esHabilidadCurativa(this.slotActivo)) {
         this.salud += this.slotActivo.puntosSalud;
       }
-      
+
       this.slotActivo.ejecutar();
+      // Si hay un objetivo y la habilidad hace daño
+      if (objetivo && this.slotActivo.damage > 0) {
+        Logger.info(`⚔️ ${this.nombre} ataca a ${objetivo.nombre}`);
+        objetivo.recibirDamage(this.slotActivo.damage);
+      }
       this.emitir('HABILIDAD_USADA', this.slotActivo.nombre);
     } else {
       Logger.info(`[${this.nombre}] no tiene ataques listos.`);
     }
   }
 
-  mosrarEstado(): void {
+  // Método para recibir daño (Encapsulamiento)
+  recibirDamage(cantidad: number): void {
+    this.salud -= cantidad;
+    if (this.salud < 0) this.salud = 0;
+    Logger.info(`💥 ${this.nombre} recibió ${cantidad} de daño. Salud restante: ${this.salud}`);
+
+    if (this.salud === 0) {
+      Logger.info(`💀 ${this.nombre} ha caído en combate.`);
+    }
+  }
+
+  mostrarEstado(): void {
     Logger.info(`--- Estado de [${this.nombre}] ---`);
     Logger.info(`Salud: ${this.salud}`);
     Logger.info(`Defensa: ${this.defensa + (this.slotPasivo ? this.slotPasivo.bonoDefensa : 0)}`);

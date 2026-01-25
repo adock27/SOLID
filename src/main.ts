@@ -10,22 +10,23 @@ const ander = new Heroe("Ander");
 geralt.agregarObservador(sistemaLogros);
 ander.agregarObservador(sistemaLogros);
 
-// 3. Ejecución
 console.log("--- INICIO DEL COMBATE ---");
+// 3. Ejecución
 geralt.init();
 ander.init();
 
 geralt.setHabilidadActiva(HabilidadFactory.crearActiva('ESPADA'));
-geralt.actuar();
+geralt.actuar(ander);
 
-ander.setHabilidadActiva(HabilidadFactory.crearActiva('FUEGO'));
+ander.setHabilidadActiva(HabilidadFactory.crearActiva('RAYO'));
 ander.setHabilidadPasiva(HabilidadFactory.crearPasiva('ROBLE'));
 ander.actuar();
-ander.setHabilidadActiva(HabilidadFactory.crearActiva('CURACION'));
-ander.actuar();
+ander.setHabilidadPasiva(HabilidadFactory.crearPasiva('CURACION'));
+ander.actuar(geralt);
+ander.actuar(geralt);
 
-geralt.mosrarEstado();
-ander.mosrarEstado();
+geralt.mostrarEstado();
+ander.mostrarEstado();
 
 
 console.log("--- FIN DEL COMBATE ---");
