@@ -3,7 +3,7 @@
 export class Logger {
   static info(mensaje: string): void {
     const timestamp = new Date().toLocaleTimeString();
-    console.log(`[LOG ${timestamp}] INFO: ${mensaje}`);
+    console.log(`[LOG ${timestamp}] INFO: ${mensaje}\n`);
   }
 
   static combate(entidad: string, accion: string): void {

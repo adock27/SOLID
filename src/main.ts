@@ -1,10 +1,9 @@
 import { Heroe } from './core/entities/Heroe.js';
 import { AtaqueEspada } from './abilities/AtaqueEspada.js';
 import { HechizoFuego } from './abilities/HechizoFuego.js';
+import { PielDeRoble } from './abilities/PielDeRoble.js';
 
-// 1. Creamos las habilidades (Instancias concretas)
-const espada = new AtaqueEspada();
-const fuego = new HechizoFuego();
+
 
 // 2. Creamos al héroe inyectando una habilidad inicial (Inversión de Dependencias)
 const geralt = new Heroe("Geralt");
@@ -15,10 +14,11 @@ console.log("--- INICIO DEL COMBATE ---");
 geralt.init();
 ander.init();
 
-geralt.setHabilidad(espada);
+geralt.setHabilidadActiva(new AtaqueEspada());
 geralt.actuar();
 
-ander.setHabilidad(fuego);
+ander.setHabilidadActiva(new HechizoFuego());
+ander.setHabilidadPasiva(new PielDeRoble());
 ander.actuar();
 
 

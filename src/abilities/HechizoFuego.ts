@@ -1,8 +1,10 @@
-import { IHabilidad } from '../core/interfaces/IHabilidad.js';
+import { IHabilidadMagica } from '../core/interfaces/IHabilidadMagica.js';
 import { Logger } from '../shared/Logger.js';
-export class HechizoFuego implements IHabilidad {
+
+export class HechizoFuego implements IHabilidadMagica {
   nombre = "Bola de Fuego";
+  costeMana = 10;
   ejecutar(): void {
-    Logger.info("🔥 ¡Lanzando explosión ardiente!");
+    Logger.info(`🔥 Lanzando fuego (Gasto: ${this.costeMana} de maná)`);
   }
 }
