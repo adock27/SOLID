@@ -12,10 +12,14 @@ const ander = new Heroe("Ander");
 
 // 3. Ejecución
 console.log("--- INICIO DEL COMBATE ---");
-geralt.actuar();
-ander.actuar();
+geralt.init();
+ander.init();
+
 geralt.setHabilidad(espada);
 geralt.actuar();
+
 ander.setHabilidad(fuego);
 ander.actuar();
+
+
 console.log("--- FIN DEL COMBATE ---");

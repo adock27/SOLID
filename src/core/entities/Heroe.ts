@@ -21,4 +21,8 @@ export class Heroe {
     }
     this.habilidad.ejecutar();
   }
+
+  init(): void {
+    Logger.info(`¡El héroe ${this.nombre} ha entrado en la batalla!`);
+  }
 }
