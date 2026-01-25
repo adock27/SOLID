@@ -4,6 +4,6 @@ export class Curacion implements IHabilidad {
   nombre = "Curación Mágica";
   puntosSalud = 150;
   ejecutar(): void {
-    Logger.info("✨ ¡Restaura la salud de todos los aliados!");
+    Logger.info("✨ ¡Restablece 150 puntos de salud!");
   }
 }
