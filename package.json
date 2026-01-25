@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "dev": "nodemon",
+    "start": "npx tsx src/main.ts"
+  },
   "devDependencies": {
     "nodemon": "^3.1.11",
     "tsx": "^4.21.0"

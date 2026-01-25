@@ -7,12 +7,15 @@ const espada = new AtaqueEspada();
 const fuego = new HechizoFuego();
 
 // 2. Creamos al héroe inyectando una habilidad inicial (Inversión de Dependencias)
-const miHeroe = new Heroe("Geralt", espada);
+const geralt = new Heroe("Geralt");
+const ander = new Heroe("Ander");
 
 // 3. Ejecución
 console.log("--- INICIO DEL COMBATE ---");
-miHeroe.actuar();
-
-// 4. Cambiamos el comportamiento en caliente (Liskov Substitution / Open-Closed)
-miHeroe.setHabilidad(fuego);
-miHeroe.actuar();
+geralt.actuar();
+ander.actuar();
+geralt.setHabilidad(espada);
+geralt.actuar();
+ander.setHabilidad(fuego);
+ander.actuar();
+console.log("--- FIN DEL COMBATE ---");

@@ -1,19 +1,24 @@
 import { IHabilidad } from '../interfaces/IHabilidad.js';
+import { Logger } from '../../shared/Logger.js';
 
 export class Heroe {
+  // Ponemos el signo '?' para indicar que puede ser undefined
+  private habilidad?: IHabilidad;
   constructor(
-    public nombre: string,
-    private habilidad: IHabilidad // Inyección de dependencia
-  ) {}
+    public nombre: string
+  ) { }
 
   // Permite cambiar comportamiento sin modificar la clase
   setHabilidad(nuevaHabilidad: IHabilidad): void {
-    console.log(`\n[Sistema]: ${this.nombre} ha equipado: ${nuevaHabilidad.nombre}`);
+    Logger.info(`${this.nombre} ha equipado ${nuevaHabilidad.nombre}`);
     this.habilidad = nuevaHabilidad;
   }
 
   actuar(): void {
-    console.log(`[Acción]: ${this.nombre} se prepara...`);
+    if (!this.habilidad) {
+      Logger.info(`${this.nombre} no tiene habilidades equipadas.`);
+      return;
+    }
     this.habilidad.ejecutar();
   }
 }
