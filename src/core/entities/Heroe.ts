@@ -5,10 +5,12 @@ import { esHabilidadFisica } from '../interfaces/IHabilidadFisica.js';
 import { IHabilidadActiva } from '../interfaces/IHabilidadActiva.js';
 import { IHabilidadPasiva } from '../interfaces/IHabilidadPasiva.js';
 import { IObservador } from '../interfaces/IObservador.js';
+import { esHabilidadCurativa } from '../interfaces/IHabilidadCurativa.js';
 
 export class Heroe {
   private observadores: IObservador[] = [];
-  private defensaBase: number = 80;
+  private defensa: number = 80;
+  private salud: number = 1000;
   private magia: number = 100;
   private energia: number = 100;
   private habilidad?: IHabilidad;
@@ -52,6 +54,10 @@ export class Heroe {
         this.energia -= this.slotActivo.costeEnergia;
       }
 
+      if (esHabilidadCurativa(this.slotActivo)) {
+        this.salud += this.slotActivo.puntosSalud;
+        Logger.info(`[${this.nombre}] se ha curado ${this.slotActivo.puntosSalud} puntos de salud.`);
+      }
       this.slotActivo.ejecutar();
       this.emitir('HABILIDAD_USADA', this.slotActivo.nombre);
     } else {
@@ -61,7 +67,8 @@ export class Heroe {
 
   mosrarEstado(): void {
     Logger.info(`--- Estado de [${this.nombre}] ---`);
-    Logger.info(`Defensa: ${this.defensaBase + (this.slotPasivo ? this.slotPasivo.bonoDefensa : 0)}`);
+    Logger.info(`Salud: ${this.salud}`);
+    Logger.info(`Defensa: ${this.defensa + (this.slotPasivo ? this.slotPasivo.bonoDefensa : 0)}`);
     Logger.info(`Magia: ${this.magia}`);
     Logger.info(`Energía: ${this.energia}`);
     Logger.info('--------------------------\n');

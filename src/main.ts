@@ -21,6 +21,8 @@ geralt.actuar();
 ander.setHabilidadActiva(HabilidadFactory.crearActiva('FUEGO'));
 ander.setHabilidadPasiva(HabilidadFactory.crearPasiva('ROBLE'));
 ander.actuar();
+ander.setHabilidadActiva(HabilidadFactory.crearActiva('CURACION'));
+ander.actuar();
 
 geralt.mosrarEstado();
 ander.mosrarEstado();
