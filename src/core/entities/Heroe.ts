@@ -56,8 +56,8 @@ export class Heroe {
 
       if (esHabilidadCurativa(this.slotActivo)) {
         this.salud += this.slotActivo.puntosSalud;
-        Logger.info(`[${this.nombre}] se ha curado ${this.slotActivo.puntosSalud} puntos de salud.`);
       }
+      
       this.slotActivo.ejecutar();
       this.emitir('HABILIDAD_USADA', this.slotActivo.nombre);
     } else {

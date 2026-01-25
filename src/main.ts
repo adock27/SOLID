@@ -23,7 +23,6 @@ ander.setHabilidadPasiva(HabilidadFactory.crearPasiva('ROBLE'));
 ander.actuar();
 ander.setHabilidadActiva(HabilidadFactory.crearActiva('CURACION'));
 ander.actuar();
-ander.actuar();
 
 geralt.mosrarEstado();
 ander.mosrarEstado();

@@ -1,8 +1,9 @@
-import { IHabilidad } from '../core/interfaces/IHabilidad.js';
+import { IHabilidadMagica } from '../core/interfaces/IHabilidadMagica.js';
 import { Logger } from '../shared/Logger.js';
-export class Curacion implements IHabilidad {
+export class Curacion implements IHabilidadMagica {
   nombre = "Curación Mágica";
   puntosSalud = 150;
+  costeMana = 20;
   ejecutar(): void {
     Logger.info("✨ ¡Restablece 150 puntos de salud!");
   }
