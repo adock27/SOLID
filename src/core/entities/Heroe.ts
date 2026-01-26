@@ -21,7 +21,7 @@ export class Heroe {
   ) { }
 
   init(): void {
-    Logger.info(`¡[${this.nombre}] El héroe, ha entrado en la batalla!`);
+    Logger.info(`[${this.nombre}] El héroe, ha entrado en la batalla`);
   }
 
   agregarObservador(obs: IObservador): void {
@@ -61,7 +61,7 @@ export class Heroe {
       this.slotActivo.ejecutar();
       // Si hay un objetivo y la habilidad hace daño
       if (objetivo && this.slotActivo.damage > 0) {
-        Logger.info(`⚔️ ${this.nombre} ataca a ${objetivo.nombre}`);
+        Logger.info(`⚔️ ${this.nombre} ataca a ${objetivo.nombre} con ${this.slotActivo.nombre}`);
         objetivo.recibirDamage(this.slotActivo.damage);
       }
       this.emitir('HABILIDAD_USADA', this.slotActivo.nombre);

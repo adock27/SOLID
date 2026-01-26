@@ -17,11 +17,12 @@ ander.init();
 
 geralt.setHabilidadActiva(HabilidadFactory.crearActiva('ESPADA'));
 geralt.actuar(ander);
+ander.setHabilidadActiva(HabilidadFactory.crearActiva('CURACION'));
+ander.actuar(geralt);
+geralt.actuar(ander);
 
 ander.setHabilidadActiva(HabilidadFactory.crearActiva('RAYO'));
 ander.setHabilidadPasiva(HabilidadFactory.crearPasiva('ROBLE'));
-ander.actuar();
-ander.setHabilidadPasiva(HabilidadFactory.crearPasiva('CURACION'));
 ander.actuar(geralt);
 ander.actuar(geralt);
 

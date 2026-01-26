@@ -6,6 +6,5 @@ export class HechizoRayo implements IHabilidadMagica {
     costeMana = 50;
     damage = 400;
     ejecutar(): void {
-        Logger.info(`Lanzando rayo (Gasto: ${this.costeMana} de maná)`);
     }
 }

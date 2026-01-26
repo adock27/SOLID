@@ -9,8 +9,10 @@ export class ContadorLogros implements IObservador {
     if (evento === 'HABILIDAD_USADA') {
       const actual = this.conteoHabilidades.get(nombreHabilidad) || 0;
       this.conteoHabilidades.set(nombreHabilidad, actual + 1);
-      
-      Logger.info(`🏆 LOGRO: ${nombreHabilidad} usado ${actual + 1} veces.`);
+      if(actual == 3){
+        Logger.info(`🏆 LOGRO: ${nombreHabilidad} usado ${actual + 1} veces.`);
+      }
+      // Logger.info(`🏆 LOGRO: ${nombreHabilidad} usado ${actual + 1} veces.`);
     }
   }
 }
