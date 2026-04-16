@@ -84,12 +84,14 @@ export abstract class Heroe {
   }
 
   mostrarEstado(): void {
-    Logger.info(`--- Estado de [${this.nombre}] ---`);
-    Logger.info(`Salud: ${this.salud}`);
-    Logger.info(`Defensa: ${this.defensa + (this.slotPasivo ? this.slotPasivo.bonoDefensa : 0)}`);
-    Logger.info(`Magia: ${this.magia}`);
-    Logger.info(`Energía: ${this.energia}`);
-    Logger.info('--------------------------\n');
+    Logger.info(`--- Estado de [${this.nombre}] ---\n
+      Salud: ${this.salud}\n
+      Defensa: ${this.defensa + (this.slotPasivo ? this.slotPasivo.bonoDefensa : 0)}\n
+      Magia: ${this.magia}\n
+      Energía: ${this.energia}\n
+      slotActivo: ${this.slotActivo?.nombre}\n
+      slotPasivo: ${this.slotPasivo?.nombre}\n
+    `);
   }
 
 
