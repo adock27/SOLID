@@ -13,7 +13,6 @@ export class Heroe {
   private salud: number = 1000;
   private magia: number = 100;
   private energia: number = 100;
-  private habilidad?: IHabilidad;
   private slotActivo?: IHabilidadActiva;
   private slotPasivo?: IHabilidadPasiva;
   constructor(

@@ -6,9 +6,10 @@ import { Curacion } from './Curacion';
 import { AtaqueEspada } from './AtaqueEspada.js';
 import { PielDeRoble } from './PielDeRoble.js';
 import { HechizoRayo } from './HechizoRayo.js';
+import { CascoDiamante } from './CascoDiamante.js';
 
 export type TipoActiva = 'FUEGO' | 'ESPADA' | 'RAYO' | 'CURACION';
-export type TipoPasiva = 'ROBLE';
+export type TipoPasiva = 'ROBLE' | 'CASCO_DIAMANTE';
 
 export class HabilidadFactory {
     static crearActiva(tipo: TipoActiva): IHabilidadActiva {
@@ -24,6 +25,7 @@ export class HabilidadFactory {
     static crearPasiva(tipo: TipoPasiva): IHabilidadPasiva {
         switch (tipo) {
             case 'ROBLE': return new PielDeRoble();
+            case 'CASCO_DIAMANTE': return new CascoDiamante();
             default: throw new Error("Pasiva no encontrada");
         }
     }

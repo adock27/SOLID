@@ -28,10 +28,17 @@ ander.mostrarEstado();
 
 breitner.setHabilidadActiva(HabilidadFactory.crearActiva('RAYO'));
 breitner.actuar(ander)
+
+breitner.setHabilidadPasiva(HabilidadFactory.crearPasiva('CASCO_DIAMANTE'));
+breitner.mostrarEstado();
 breitner.setHabilidadActiva(HabilidadFactory.crearActiva('ESPADA'));
 breitner.actuar(ander)
 
 ander.setHabilidadActiva(HabilidadFactory.crearActiva('ESPADA'));
+ander.actuar(breitner);
+ander.setHabilidadActiva(HabilidadFactory.crearActiva('RAYO'));
+ander.actuar(breitner);
+ander.setHabilidadActiva(HabilidadFactory.crearActiva('FUEGO'));
 ander.actuar(breitner);
 
 
