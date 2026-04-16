@@ -9,7 +9,7 @@ import { esHabilidadCurativa } from '../interfaces/IHabilidadCurativa.js';
 
 export class Heroe {
   private observadores: IObservador[] = [];
-  private defensa: number = 80;
+  private defensa: number = 0;
   private salud: number = 1000;
   private magia: number = 100;
   private energia: number = 100;
@@ -70,11 +70,16 @@ export class Heroe {
     }
   }
 
-  // Método para recibir daño (Encapsulamiento)
   recibirDamage(cantidad: number): void {
-    this.salud -= cantidad;
+    const defensaTotal = this.defensa + (this.slotPasivo?.bonoDefensa ?? 0);
+
+    const danoReal = cantidad * (100 / (100 + defensaTotal));
+
+    this.salud -= danoReal;
+
+    Logger.info(`💥 ${this.nombre} recibió ${danoReal.toFixed(2)} de daño. Salud restante: ${this.salud.toFixed(2)}`);
+
     if (this.salud < 0) this.salud = 0;
-    Logger.info(`💥 ${this.nombre} recibió ${cantidad} de daño. Salud restante: ${this.salud}`);
 
     if (this.salud === 0) {
       Logger.info(`💀 ${this.nombre} ha caído en combate.`);
