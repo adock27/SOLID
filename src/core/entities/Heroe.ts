@@ -7,14 +7,15 @@ import { IHabilidadPasiva } from '../interfaces/IHabilidadPasiva.js';
 import { IObservador } from '../interfaces/IObservador.js';
 import { esHabilidadCurativa } from '../interfaces/IHabilidadCurativa.js';
 
-export class Heroe {
+export abstract class Heroe {
   private observadores: IObservador[] = [];
-  private defensa: number = 0;
-  private salud: number = 1000;
-  private magia: number = 100;
-  private energia: number = 100;
+  protected defensa: number = 0;
+  protected salud: number = 1000;
+  protected magia: number = 100;
+  protected energia: number = 100;
   private slotActivo?: IHabilidadActiva;
   private slotPasivo?: IHabilidadPasiva;
+
   constructor(
     public nombre: string
   ) { }
@@ -43,30 +44,27 @@ export class Heroe {
   }
 
   actuar(objetivo?: Heroe): void {
-
     if (this.slotActivo) {
-      if (esHabilidadMagica(this.slotActivo)) {
-        this.magia -= this.slotActivo.costeMana;
-      }
-
-      if (esHabilidadFisica(this.slotActivo)) {
-        this.energia -= this.slotActivo.costeEnergia;
-      }
-
-      if (esHabilidadCurativa(this.slotActivo)) {
-        this.salud += this.slotActivo.puntosSalud;
-      }
-
-      this.slotActivo.ejecutar();
-      // Si hay un objetivo y la habilidad hace daño
-      if (objetivo && this.slotActivo.damage > 0) {
-        Logger.info(`⚔️ ${this.nombre} ataca a ${objetivo.nombre} con ${this.slotActivo.nombre}`);
-        objetivo.recibirDamage(this.slotActivo.damage);
-      }
+      this.slotActivo.ejecutar(this, objetivo);
       this.emitir('HABILIDAD_USADA', this.slotActivo.nombre);
     } else {
       Logger.info(`[${this.nombre}] no tiene ataques listos.`);
     }
+  }
+
+  consumirMana(cantidad: number): void {
+    this.magia -= cantidad;
+    if (this.magia < 0) this.magia = 0;
+  }
+
+  consumirEnergia(cantidad: number): void {
+    this.energia -= cantidad;
+    if (this.energia < 0) this.energia = 0;
+  }
+
+  sanar(cantidad: number): void {
+    this.salud += cantidad;
+    Logger.info(`💚 ${this.nombre} se ha curado ${cantidad} puntos. Salud: ${this.salud.toFixed(2)}`);
   }
 
   recibirDamage(cantidad: number): void {

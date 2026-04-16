@@ -1,5 +1,6 @@
 import readline from 'readline';
 import { Heroe } from './core/entities/Heroe.js';
+import { HeroeFactory } from './core/factories/HeroeFactory.js';
 import { HabilidadFactory } from './abilities/HabilidadFactory.js';
 import { ContadorLogros } from './shared/ContadorLogros.js';
 
@@ -62,11 +63,12 @@ const sistemaLogros = new ContadorLogros();
 
 // console.log("--- FIN DEL COMBATE ---");
 
-// Instancias
-const ander = new Heroe("Ander");
-const breitner = new Heroe("Breitner");
+// Instancias iniciales usando Factory
+const ander = HeroeFactory.crearHeroe('GUERRERO', "Ander");
+const breitner = HeroeFactory.crearHeroe('TANQUE', "Breitner");
+const joseph = HeroeFactory.crearHeroe('MAGO', "Joseph");
 
-const heroes = [ander, breitner];
+const heroes = [ander, breitner, joseph];
 
 const rl = readline.createInterface({
   input: process.stdin,
