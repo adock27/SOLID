@@ -1,8 +1,12 @@
 import readline from 'readline';
 import { Heroe } from './core/entities/Heroe.js';
 import { HeroeFactory } from './core/factories/HeroeFactory.js';
-import { HabilidadFactory } from './abilities/HabilidadFactory.js';
+import { HabilidadFactory } from './core/factories/HabilidadFactory.js';
 import { ContadorLogros } from './shared/ContadorLogros.js';
+import { initRegistry } from './core/bootstrapper.js';
+
+// Inicializar el registro de fábricas
+initRegistry();
 
 const sistemaLogros = new ContadorLogros();
 
