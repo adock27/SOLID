@@ -94,5 +94,19 @@ export abstract class Heroe {
     `);
   }
 
+  getEstado() {
+    return {
+      nombre: this.nombre,
+      salud: this.salud,
+      maxSalud: 1000,
+      magia: this.magia,
+      energia: this.energia,
+      defensa: this.defensa,
+      habilidadActiva: this.slotActivo?.nombre,
+      habilidadPasiva: this.slotPasivo?.nombre,
+      defensaTotal: this.defensa + (this.slotPasivo?.bonoDefensa ?? 0)
+    };
+  }
+
 
 }

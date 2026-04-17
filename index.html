@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLID Battle Arena - Multiplayer</title>
+    <link rel="stylesheet" href="/src/client/style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>SOLID BATTLE ARENA</h1>
+            <p id="room-status">Esperando jugadores...</p>
+        </header>
+
+        <main id="game-arena" style="display: none;">
+            <div class="battle-arena">
+                <!-- Player 1 -->
+                <div id="p0-card" class="hero-card">
+                    <div class="hero-name" id="p0-name">Jugador 1</div>
+                    <div id="p0-type" style="font-size: 0.75rem; color: var(--primary);">GUERRERO</div>
+                    <div class="status-bars">
+                        <span>HP</span>
+                        <div class="bar-container"><div id="p0-hp" class="bar hp-bar" style="width: 100%;"></div></div>
+                        <span>Magia</span>
+                        <div class="bar-container"><div id="p0-mp" class="bar mp-bar" style="width: 100%;"></div></div>
+                        <span>Energía</span>
+                        <div class="bar-container"><div id="p0-en" class="bar en-bar" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="stats-grid">
+                        <span>Defensa: <b id="p0-def">0</b></span>
+                        <span>Activa: <b id="p0-active">Ninguna</b></span>
+                        <span>Pasiva: <b id="p0-passive">Ninguna</b></span>
+                    </div>
+                </div>
+
+                <div class="vs-text">
+                    <h2 style="font-size: 3rem; opacity: 0.5;">VS</h2>
+                </div>
+
+                <!-- Player 2 -->
+                <div id="p1-card" class="hero-card">
+                    <div class="hero-name" id="p1-name">Jugador 2</div>
+                    <div id="p1-type" style="font-size: 0.75rem; color: var(--primary);">MAGO</div>
+                    <div class="status-bars">
+                        <span>HP</span>
+                        <div class="bar-container"><div id="p1-hp" class="bar hp-bar" style="width: 100%;"></div></div>
+                        <span>Magia</span>
+                        <div class="bar-container"><div id="p1-mp" class="bar mp-bar" style="width: 100%;"></div></div>
+                        <span>Energía</span>
+                        <div class="bar-container"><div id="p1-en" class="bar en-bar" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="stats-grid">
+                        <span>Defensa: <b id="p1-def">0</b></span>
+                        <span>Activa: <b id="p1-active">Ninguna</b></span>
+                        <span>Pasiva: <b id="p1-passive">Ninguna</b></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-panel" id="controls" style="display: none;">
+                <h3 id="turn-indicator">Es tu turno. Elige una acción:</h3>
+                <div class="actions-container" id="actions">
+                    <!-- Botones dinámicos aquí -->
+                </div>
+            </div>
+
+            <div class="battle-log" id="log">
+                <div class="log-entry">Bienvenido a la arena. Esperando inicio de combate...</div>
+            </div>
+        </main>
+
+        <div id="lobby" style="text-align: center; margin-top: 5rem;">
+            <button id="btn-ready" class="btn-action" style="background: var(--success); font-size: 1.5rem;">ESTOY LISTO</button>
+        </div>
+
+        <div id="winner-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 100; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;">
+            <h1 id="winner-name">¡TENEMOS UN GANADOR!</h1>
+            <button onclick="location.reload()" class="btn-action">JUGAR DE NUEVO</button>
+        </div>
+    </div>
+
+    <script type="module" src="/src/client/main.ts"></script>
+</body>
+</html>
